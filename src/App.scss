@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.weather {
+  padding: 5rem 0;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border: solid black;
+  background-color: rgb(81, 81, 116);
+  border-radius: 2rem;
+  color: aliceblue;
+  width: 80%;
+  min-height: 90vh;
+  opacity: 80%;
+
+  .user-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+
+    &__text {
+      border-radius: 1rem;
+      padding: 0.5rem;
+      background-color: rgb(176, 175, 175);
+      color: black;
+      margin-right: 0.5rem;
+    }
+
+    &__btn {
+      border-radius: 100%;
+      width: 2.5rem;
+      height: 2.5rem;
+      cursor: pointer;
+      transition: ease-in-out 0.5s;
+
+      &:hover {
+        background-color: gray;
+      }
+    }
+  }
+
+  &__town {
+    font-size: 2rem;
+  }
+
+  &__temp {
+    font-size: 6rem;
+    font-weight: 700;
+  }
+
+  &__decription {
+    font-size: 2rem;
+  }
+
+  .extra {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    border: solid black;
+    background-color: rgb(99, 99, 137);
+    margin-top: 4rem;
+    width: 80%;
+    padding: 0 1rem;
+    height: 100px;
+
+    &:nth-of-type(odd) {
+      margin-top: 1rem;
+      height: 150px;
+    }
+
+    &>* {
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    & span {
+      border: solid black 1px;
+    }
+  }
+}
