@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import React from 'react';
 import image from './Images/testImage.jpg';
+import InfoBucket from './Components/InfoBucket';
+import UserInput from './Components/UserInput';
+import WeatherInfo from './Components/WeatherInfo';
 
 function App() {
 
@@ -12,7 +15,6 @@ function App() {
   const [city, setCity] = useState('');
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}`;
-  console.log(process.env.REACT_APP_WEATHER_API_KEY + ' : ' + url);
 
   const [imgSearch, setImgSearch] = useState('');
   const [background, setBackGround] = useState(image);
@@ -53,54 +55,27 @@ function App() {
 
   return (
     <main style={backGroundStyles}>
-      <div className='weather'>
-        <div className='user-input'>
-          <input
-            type='text'
-            className='user-input__text'
-            onChange={(event) => setCity(event.target.value)}
-            placeholder='...city'
-            required>
-          </input>
-          <button onClick={fetchData} className='user-input__btn'>Push</button>
-        </div>
-        <h1 className='weather__town'>{data.name}</h1>
-        <h1 className='weather__temp'>{data.main ? (1.8 * (data.main.temp - 273) + 32).toFixed(0) : 0} F</h1>
-        <h1 className='weather__description'>{data.main ? data.weather[0].description : 0}</h1>
+      <div className='wrapper'>
 
-        <div className='extra'>
-          <div>
-            <p>Humidity</p>
-            <p>{data.main ? data.main.humidity : 0}</p>
-          </div>
-          <span></span>
-          <div>
-            <p>Wind Speed</p>
-            <p>{data.main ? data.wind.speed : 0}</p>
-          </div>
-          <span></span>
-          <div>
-            <p>Feels Like</p>
-            <p>{data.main ? (1.8 * (data.main.feels_like - 273) + 32).toFixed(0) : 0} F</p>
-          </div>
-        </div>
+        <UserInput
+          onChange={(event) => setCity(event.target.value)}
+          onClick={fetchData}
+        />
 
-        <div className='extra'>
-          <div>
-            <p>Lat</p>
-            <p>{data.main ? data.coord.lat : 0}</p>
-          </div>
-          <span></span>
-          <div>
-            <p>Sea Level</p>
-            <p>{data.main ? data.main.sea_level : 0}</p>
-          </div>
-          <span></span>
-          <div>
-            <p>Lon</p>
-            <p>{data.main ? data.coord.lon : 0}</p>
-          </div>
-        </div>
+        <WeatherInfo
+          town={Date.name}
+          temp={data.main ? (1.8 * (data.main.temp - 273) + 32).toFixed(0) : 0}
+          description={data.main ? data.weather[0].description : 0}
+        />
+
+        <InfoBucket
+          humidity={data.main ? data.main.humidity : 0}
+          windSpeed={data.main ? data.wind.speed : 0}
+          feelsLike={data.main ? (1.8 * (data.main.feels_like - 273) + 32).toFixed(0) : 0}
+          lat={data.main ? data.coord.lat : 0}
+          seaLevel={data.main ? data.main.sea_level : 0}
+          lon={data.main ? data.coord.lon : 0}
+        />
 
       </div>
     </main>

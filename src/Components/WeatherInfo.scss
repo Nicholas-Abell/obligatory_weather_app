@@ -1,0 +1,19 @@
+.weather {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    &__town {
+      font-size: 2rem;
+    }
+
+    &__temp {
+      font-size: 6rem;
+      font-weight: 700;
+    }
+
+    &__decription {
+      font-size: 2rem;
+    }
+  }
