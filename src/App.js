@@ -63,7 +63,7 @@ function App() {
         />
 
         <WeatherInfo
-          town={Date.name}
+          town={data.name}
           temp={data.main ? (1.8 * (data.main.temp - 273) + 32).toFixed(0) : 0}
           description={data.main ? data.weather[0].description : 0}
         />
