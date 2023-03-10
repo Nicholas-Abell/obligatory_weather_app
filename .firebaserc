@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "obligatory-weather-app"
+    "default": "dist/obligatory-weather-app"
   }
 }
